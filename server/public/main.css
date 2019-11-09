@@ -1,0 +1,28 @@
+body{
+  background: url('./images/BEEPBEEP.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+}
+
+img{
+  max-width: 120px;
+  position: absolute;
+}
+
+#startGame{
+  padding: 150px;
+  background-color: rgba(9, 9, 68, 0.692);
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin-left: -380px;
+  border-radius: 10%;
+  box-shadow:0 0 10 rgba(9, 9, 68, 0.459);
+  z-index: 1;
+  font-size: 100px;
+}

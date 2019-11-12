@@ -4,11 +4,13 @@ class Coyote extends React.Component {
   constructor(props){
     super(props)
   }
+
+
   render(){
     return(
       <img style={{
-        left:this.props.x,
-        top:this.props.y
+        transition: this.props.transition,
+        transform : 'translate(' + this.props.x + 'px, ' + this.props.y + 'px)',
       }}src="/images/coyote.png" alt="Coyote"/>
     )
   }

@@ -12,7 +12,7 @@ img{
   position: absolute;
 }
 
-#startGame{
+.startGame{
   padding: 150px;
   background-color: rgba(9, 9, 68, 0.692);
   text-align: center;

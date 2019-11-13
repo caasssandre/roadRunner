@@ -9,7 +9,7 @@ import catchingGame from './catchingGame'
 const randomX = () => {return Math.random()*(window.screen.width-300)+200}
 const randomY = () => {return Math.random()*(window.screen.height-300)+200}
 
-class Home extends React.Component {
+class CatchGame extends React.Component {
   constructor(props){
     super(props)
     this.state={
@@ -30,8 +30,8 @@ class Home extends React.Component {
         y: randomY()
       },
       isFullScreen:false,
-      coyoteScores:false,
-      roadRunnerScores:false,
+      // coyoteScores:false,
+      // roadRunnerScores:false,
       coyoteScore: 0,
       roadRunnerScore:0,
       speedCoefficient: 1,
@@ -40,6 +40,7 @@ class Home extends React.Component {
   }
 
   toggleFullScreen = () => {
+    this.state.isFullScreen ? document.exitFullscreen() :
     document.documentElement.requestFullscreen()
     this.setState({
       isFullScreen: !this.state.isFullScreen
@@ -55,26 +56,14 @@ class Home extends React.Component {
     document.removeEventListener("keydown", this.handleKeyPress, false);
   }
 
-  handleCollision = () => {
-    catchingGame.handleCollision(this)
-  }
-
-  handleSeeds = () => {
-    catchingGame.handleSeeds(this)
-  }
-
   handleKeyPress = (evt) => {
     catchingGame.handleKeyPress(this, evt)
-  }
-
-  accelerate = (animal, keyCode) => {
-    catchingGame.accelerate(this, animal, keyCode)
   }
 
   render(){
     return(
       <>
-      {!this.state.isFullScreen && <div id='startGame' onClick={() => this.toggleFullScreen()}>Start Game</div>}
+      {!this.state.isFullScreen ? <div id='startGame' onClick={() => this.toggleFullScreen()}>Start Game</div> : <button onClick={()=>this.toggleFullScreen()}>Exit Full screen</button>}
       <h2>coyote {this.state.coyoteScore}, road runner {this.state.roadRunnerScore}</h2>
       <div id='app' style={{
          width:window.screen.width,
@@ -93,4 +82,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home
+export default CatchGame

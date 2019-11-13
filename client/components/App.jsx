@@ -1,9 +1,9 @@
 import React from 'react'
-import Home from './Home'
+import CatchGame from './CatchGame'
 
 const App = () => {
   return (
-    <Home></Home>
+    <CatchGame/>
   )
 }
 

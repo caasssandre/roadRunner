@@ -119,8 +119,8 @@ function accelerate(object, animal, keyCode){
       transition:'0.1s'
     })
   }
-  object.handleCollision()
-  object.handleSeeds()
+  handleCollision(object)
+  handleSeeds(object)
 }
 
 function handleKeyPress(object, evt){
@@ -162,13 +162,10 @@ function handleKeyPress(object, evt){
       })
     }
     else{
-    object.accelerate(animal, evt.code)
+    accelerate(object, animal, evt.code)
     }
 }
 
 module.exports = {
-  handleCollision,
-  handleSeeds,
-  accelerate,
   handleKeyPress
 }

@@ -5,10 +5,16 @@ body{
   -o-background-size: cover;
   background-size: cover;
   overflow: hidden;
+  display: flex;
 }
 
 img{
   max-width: 120px;
+  position: absolute;
+}
+
+#rock{
+  max-width: 60px;
   position: absolute;
 }
 
@@ -25,4 +31,12 @@ img{
   box-shadow:0 0 10 rgba(9, 9, 68, 0.459);
   z-index: 1;
   font-size: 100px;
+}
+
+.halfScreenContainer{
+  flex-direction: row;
+  border-right-style: dashed;
+  border-width: 10px;
+  border-color: white;
+  top:0;
 }

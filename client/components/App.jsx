@@ -1,6 +1,7 @@
 import React from 'react'
-import CatchGame from './CatchGame'
 import StartForm from './StartForm'
+import CatchGame from './CatchGame'
+import RockGame from './RockGame'
 
 class App extends React.Component{
   constructor(props){
@@ -42,7 +43,7 @@ class App extends React.Component{
           player1 = {this.state.player1}
           incrementGameCount = {this.incrementGameCount}
           keepScores = {this.keepScores}/>}
-      {this.state.gameCount == 2 && <h1>Hello</h1>}
+      {this.state.gameCount == 2 && <RockGame/>}
       </>
     )
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import Coyote from './Coyote'
 import RoadRunner from './RoadRunner'
 import Seeds from './Seeds'
-import Sounds from './Sounds'
+// import Sounds from './Sounds'
 import catchingGame from './catchingGame'
 
 
@@ -42,7 +42,7 @@ class CatchGame extends React.Component {
   }
 
   toggleFullScreen = () => {
-    setTimeout(()=>this.nextGame(), 10000)
+    setTimeout(()=>this.nextGame(), 3000)
     this.state.isFullScreen ? document.exitFullscreen() :
     document.documentElement.requestFullscreen()
     this.setState({

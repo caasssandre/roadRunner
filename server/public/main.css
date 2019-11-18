@@ -40,3 +40,7 @@ img{
   border-color: white;
   top:0;
 }
+
+.pie{
+  max-width: 50px;
+}

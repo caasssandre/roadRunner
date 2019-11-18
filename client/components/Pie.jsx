@@ -1,18 +1,18 @@
 import React from 'react'
 
-class Rock extends React.Component{
+class Pie extends React.Component{
   constructor(props){
     super(props)
   }
 
   render(){
     return (
-      <img id='rock' style={{
+      <img className='pie' style={{
         transition: this.props.transition,
         transform : 'translate(' + this.props.x + 'px, ' + this.props.y + 'px)',
-      }} src="/images/rock.png" alt="rock"/>
+      }} src="/images/pie.png" alt="pie"/>
     )
   }
 }
 
-export default Rock
+export default Pie

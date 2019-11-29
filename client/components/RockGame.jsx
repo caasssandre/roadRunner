@@ -26,6 +26,22 @@ let adjustments = {
   },
 }
 
+function makeRocksArray(){
+  let leftRocks = Array.from({length:5}, (v, x)=> this.makeItems(x))
+  let rightRocks = leftRocks.map(rock => {
+    return {
+      y:rock.y,
+      x:rock.x + (width/2),
+      transition: '0.2s'
+    }
+  })
+  let rocks = [...leftRocks, ... rightRocks]
+  return rocks
+}
+
+let rocks= makeRocksArray(),
+
+
 class RockGame extends React.Component{
   constructor(props){
     super(props)
@@ -38,8 +54,9 @@ class RockGame extends React.Component{
         x: (width - width/4)-100,
         transition: '0.1s'
       },
-      rocks: this.makeRocksArray(),
-      pies: this.makeRocksArray()
+      pies: this.makeRocksArray(),
+      coyoteScore: this.props.player1.score,
+      roadRunnerScore:this.props.player2.score,
     }
     this.drop()
   }
@@ -68,17 +85,24 @@ class RockGame extends React.Component{
   }
 
 
-  makeRocksArray = () => {
-    let leftRocks = Array.from({length:5}, (v, x)=> this.makeItems(x))
-    let rightRocks = leftRocks.map(rock => {
-      return {
-        y:rock.y,
-        x:rock.x + (width/2),
-        transition: '0.2s'
-      }
+  handlePieCollision = () => {
+    this.state.pies.map(pie =>{
+      if(Math.abs(this.state.coyote.x - pie.x) < 100 
+        && pie.y == height){
+          console.log('coyote eats a pie')
+          // this.setState({
+          //   coyoteScore : this.state.coyoteScore + 1
+          // })
+        }
+        if(Math.abs(this.state.roadRunner.x - pie.x) < 100 
+        && pie.y == height){
+          console.log('road runner eats a pie')
+          // this.setState({
+          //   roadRunnerScore : this.state.roadRunnerScore + 1
+          // })
+        }
     })
-    let rocks = [...leftRocks, ... rightRocks]
-    return rocks
+
   }
 
   componentDidMount(){
@@ -134,16 +158,20 @@ class RockGame extends React.Component{
   }
 
   render(){
+    this.handlePieCollision()
     return(
       <>
+      
+      <h2 className = 'scores'>{this.props.player1.name} {this.state.coyoteScore}, {this.props.player2.name} {this.state.roadRunnerScore}</h2>
+
         <div className='halfScreenContainer' style={{height:height, width: width/2 -20}}>
            <Coyote transition = {this.state.coyote.transition} x={this.state.coyote.x} y={height-100}/>
             <RoadRunner transition = {this.state.roadRunner.transition} x={this.state.roadRunner.x} y={height-100}/>
-            {this.state.rocks.map((rock, i) =>{
-              return <Rock key={i} transition = {this.state.rocks[i].transition} x={rock.x} y={rock.y}/>
+            {rocks.map((rock, i) =>{
+              return <Rock key={i} transition = {rocks[i].transition} x={rock.x} y={rock.y}/>
             })}
-            {this.state.pies.map((pie, i) =>{
-              return <Pie key={i} transition = {this.state.pies[i].transition} x={pie.x} y={pie.y}/>
+            {pies.map((pie, i) =>{
+              return <Pie key={i} transition = {pies[i].transition} x={pie.x} y={pie.y}/>
             })}
         </div>
       </>

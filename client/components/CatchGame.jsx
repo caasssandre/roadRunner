@@ -42,7 +42,7 @@ class CatchGame extends React.Component {
   }
 
   toggleFullScreen = () => {
-    setTimeout(()=>this.nextGame(), 3000)
+    setTimeout(()=>this.nextGame(), 10000)
     this.state.isFullScreen ? document.exitFullscreen() :
     document.documentElement.requestFullscreen()
     this.setState({
@@ -83,7 +83,7 @@ class CatchGame extends React.Component {
     return(
       <>
       {!this.state.gameOn && !this.state.gameOver ? <div className='startGame' onClick={() => this.toggleFullScreen()}>Start Game</div> : <button onClick={()=>this.toggleFullScreen()}>Exit Full screen</button>}
-      <h2>{this.props.player1.name} {this.state.coyoteScore}, {this.props.player2.name} {this.state.roadRunnerScore}</h2>
+      <h2 className = 'scores'>{this.props.player1.name} {this.state.coyoteScore}, {this.props.player2.name} {this.state.roadRunnerScore}</h2>
       <div id='app' style={{
          width:window.screen.width,
          height:window.screen.height

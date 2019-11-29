@@ -44,3 +44,7 @@ img{
 .pie{
   max-width: 50px;
 }
+
+.scores{
+  position: absolute;
+}

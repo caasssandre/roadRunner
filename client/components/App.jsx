@@ -43,7 +43,11 @@ class App extends React.Component{
           player1 = {this.state.player1}
           incrementGameCount = {this.incrementGameCount}
           keepScores = {this.keepScores}/>}
-      {this.state.gameCount == 2 && <RockGame/>}
+      {this.state.gameCount == 2 && <RockGame
+          player2 = {this.state.player2}
+          player1 = {this.state.player1}
+          incrementGameCount = {this.incrementGameCount}
+          keepScores = {this.keepScores}/>}
       </>
     )
   }
